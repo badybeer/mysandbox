@@ -1,0 +1,45 @@
+body {
+	/*margin-top: 20px;*/
+	padding-top: 56px;
+	font-size: 16px;
+}
+
+h1 {
+	color: #3484D2;
+}
+
+a[href^="#error:"] {
+	background: red;
+	color: white;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+.navbar {
+	background: black;
+}
+
+.navbar img {
+	width: 80px;
+}
+
+@media (min-width: 992px) {
+	#mainNav {
+		background-color: #6400FF;
+	}
+}
+
+.navbar-nav {
+	font-size: 12px;
+}
+
+.bg-light {
+	background-color: #273746 !important;
+	color: #fff;
+}
+
+footer {
+	width: 100%;
+}

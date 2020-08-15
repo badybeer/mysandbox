@@ -1,0 +1,96 @@
+{**
+* @param string $basePath web base path
+* @param array $flashes flash messages
+*}
+
+{import 'components/form.latte'}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Sandbox</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+		rel="stylesheet" type="text/css" />
+	<!-- Third party plugin CSS-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+		rel="stylesheet" />
+
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap.css">
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/styles.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	{block head}{/block}
+</head>
+
+<body>
+
+	{block nav}
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="{$basePath}/index.php"><img
+					src="{$basePath}/assets/img/zizzy_logo.png"></a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto my-2 my-lg-0">
+					{if $user->loggedIn}
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" n:href="Sign:out">Odhlásiť sa</a></li>
+					{else}
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" n:href="Sign:in">Prihlásiť sa</a></li>
+					{/if}
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" n:href="Sign:up">Registrácia</a></li>
+				<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	{/block}
+
+	<div class=container>
+		<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+
+
+
+		{include content}
+
+		<footer class="bg-light py-5">
+			<div class="container">
+				<div class="small text-center text-muted">Copyright © 2020 - Bady</div>
+			</div>
+		</footer>
+	</div>
+
+	{block scripts}
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="{$basePath}/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Bootstrap core JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	<!-- Third party plugin JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="{$basePath}/js/scripts.js"></script>
+	{/block}
+</body>
+
+</html>
